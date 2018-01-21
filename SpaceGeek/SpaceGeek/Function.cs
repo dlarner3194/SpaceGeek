@@ -39,6 +39,14 @@ namespace SpaceGeek
       return resources;
     }
 
+    public string emitNewFact(FactResource resource, bool withPreface)
+    {
+      Random r = new Random();
+      if (withPreface)
+        return resource.GetFactMessage +
+               resource.Facts[r.Next(resource.Facts.Count)];
+      return resource.Facts[r.Next(resource.Facts.Count)];
+    }
 
     public string FunctionHandler(string input, ILambdaContext context)
     {
